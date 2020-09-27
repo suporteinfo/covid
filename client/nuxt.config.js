@@ -35,7 +35,7 @@ export default {
   },
 
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+    baseUrl: process.env.BASE_URL || '0.0.0.0:3000'
   },
 
   loading: { color: '#fff' },

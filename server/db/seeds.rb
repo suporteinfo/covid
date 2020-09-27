@@ -24,38 +24,17 @@ if Hospital.none?
   rand_geocoded = -> { ([-1, 1].sample * rand(0..1.0).round(6)) }
   cities = City.offset(rand(35)).limit(3)
 
-  city = City.find_by_slug('ribeirao-preto')
+  city = City.find_by_slug('jaragua')
 
   unless city.nil?
     [
-      {
-        name: 'Hospital Unimed',
-        hospital_type: 2,
-        city: city,
-        latitude: -21.225617,
-        longitude: -47.816327
-      },
-      {
-        name: 'Hospital São Lucas',
-        hospital_type: 2,
-        city: city,
-        latitude: -21.188736,
-        longitude: -47.803895
-      },
       {
         name: 'Ribeirânia (Hospital São Lucas Ribeirânia)',
         slug: 'sao-lucas-ribeirania',
         hospital_type: 2,
         city: city,
-        latitude: -21.200055,
-        longitude: -47.787171
-      },
-      {
-        name: 'Hospital Especializado',
-        hospital_type: 2,
-        city: city,
-        latitude: -21.207647,
-        longitude: -47.823695
+        latitude: -15.7514718,
+        longitude: -49.3332144
       },
       {
         name: 'Hospital Santa Casa de Misericórdia de Ribeirão Preto',
@@ -64,58 +43,6 @@ if Hospital.none?
         city: city,
         latitude: -21.167811,
         longitude: -47.805911
-      },
-      {
-        name: 'Hospital São Paulo',
-        hospital_type: 2,
-        city: city,
-        latitude: -21.184408,
-        longitude: -47.815726
-      },
-      {
-        name: 'Beneficência Portuguesa',
-        hospital_type: 1,
-        city: city,
-        latitude: -21.180653,
-        longitude: -47.813874
-      },
-      {
-        name: 'Hospital Santa Lydia',
-        hospital_type: 1,
-        city: city,
-        latitude: -21.170,
-        longitude: -47.802
-      },
-      {
-        name: 'Hospital das Clínicas',
-        slug: 'hc-campus-ribeirao-preto',
-        hospital_type: 1,
-        city: city,
-        latitude: -21.1624149,
-        longitude: -47.8544455
-      },
-      {
-        name: 'Hospital das Clínicas Unidade de Emergência',
-        slug: 'hc-emergencia-ribeirao-preto',
-        hospital_type: 1,
-        city: city,
-        latitude: -21.185455,
-        longitude: -47.8084284
-      },
-      {
-        name: 'Hospital São Francisco',
-        hospital_type: 1,
-        city: city,
-        latitude: -21.1854888,
-        longitude: -47.8096485
-      },
-      {
-        name: 'Hospital Paulínia',
-        slug: 'hospital-paulinia',
-        hospital_type: 1,
-        city: City.find_by_slug('paulinia'),
-        latitude: -22.7727157,
-        longitude: -47.1591621
       }
     ].each do |hospital|
       hospital = Hospital.create!(hospital)
