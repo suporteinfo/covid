@@ -1,20 +1,16 @@
 # frozen_string_literal: true
 
 module DataBridge::CovidCases
-  class Paulinia < DataBridge::GoogleDriveBase
+  class Maternidade < DataBridge::GoogleDriveBase
     def save!
       CovidCase.find_or_initialize_by(results[:find]).update(results[:data])
     end
 
     def get_data
-      spreadsheet_key = Rails.application.credentials.paulinia_spreadsheet_key
-
+      spreadsheet_key = Rails.application.credentials.maternidade_spreadsheet_key
       @worksheet = get_data_from_google_drive(spreadsheet_key).worksheets[1]
-
       process_cases
-
       Rails.cache.clear
-
       self
     end
 
@@ -23,7 +19,7 @@ module DataBridge::CovidCases
     def process_cases
       self.results = {
         find: {
-          city: City.find_by_slug('paulinia'),
+          city: City.find_by_slug('maternidade'),
           reference_date: Date.today
         },
         data: {
@@ -35,5 +31,6 @@ module DataBridge::CovidCases
     rescue StandardError => e
       puts "WARNING on generate CovidCase (reference date #{Date.today}): #{e}"
     end
+
   end
 end

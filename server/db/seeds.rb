@@ -29,20 +29,20 @@ if Hospital.none?
   unless city.nil?
     [
       {
-        name: 'Ribeirânia (Hospital São Lucas Ribeirânia)',
-        slug: 'sao-lucas-ribeirania',
+        name: 'Hospital e Maternidade Jaraguá',
+        slug: 'maternidade',
         hospital_type: 2,
         city: city,
-        latitude: -15.7514718,
-        longitude: -49.3332144
+        latitude: -15.7513041,
+        longitude: -49.3341571
       },
       {
-        name: 'Hospital Santa Casa de Misericórdia de Ribeirão Preto',
-        slug: 'santa-casa-ribeirao',
+        name: 'Hospital Estadual de Jaraguá Sandino de Amorim',
+        slug: 'hospital-estadual',
         hospital_type: 1,
         city: city,
-        latitude: -21.167811,
-        longitude: -47.805911
+        latitude: -15.7443824,
+        longitude: -49.3298054
       }
     ].each do |hospital|
       hospital = Hospital.create!(hospital)
@@ -71,3 +71,4 @@ if CovidCase.none?
     end
   end
 end
+
