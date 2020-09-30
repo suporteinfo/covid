@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module DataBridge::CovidCases
-  class Maternidade < DataBridge::GoogleDriveBase
+  class HospitalEstadual < DataBridge::GoogleDriveBase
     def save!
       CovidCase.find_or_initialize_by(results[:find]).update(results[:data])
     end

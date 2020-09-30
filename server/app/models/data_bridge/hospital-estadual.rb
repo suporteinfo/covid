@@ -1,14 +1,15 @@
 # frozen_string_literal: true
 
 module DataBridge
-  class Maternidade < DataBridge::GoogleDriveBase
+  class HospitalEstadual < DataBridge::GoogleDriveBase
     def save!
-      Hospital.find_by_slug('hospital-paulinia').beds.destroy_all
+      Hospital.find_by_slug('hospital-estadual').beds.destroy_all
+
       super
     end
 
     def get_data
-      spreadsheet_key = Rails.application.credentials.maternidade_spreadsheet_key
+      spreadsheet_key = Rails.application.credentials.paulinia_spreadsheet_key
       @worksheet = get_data_from_google_drive(spreadsheet_key).worksheets[0]
       process_beds
       self.data = nil if Rails.env.production?
@@ -21,6 +22,7 @@ module DataBridge
     def process_beds
       self.results = []
       # return unless valid_data?
+
       # create_result(bed_type, total_position, busy_position)
       # Total UTI-Covid
       create_result(1, [2, 2], [2, 3])
@@ -35,11 +37,9 @@ module DataBridge
     def create_result(bed_type, total_position, busy_position)
       total = @worksheet[*total_position]
       busy = @worksheet[*busy_position]
-
       (total.to_i - busy.to_i).times do |i|
         results << create_object(bed_type, :free, i)
       end
-
       busy.to_i.times do |i|
         results << create_object(bed_type, :busy, i)
       end
