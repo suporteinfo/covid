@@ -538,12 +538,11 @@ export default {
 
     mapCenter () {
       const positions = {
-        'ribeirao-preto': [-21.1775, -47.81028],
-        paulinia: [-22.7624246, -47.15619]
+        'jaragua': [-21.1775, -47.81028]
       }
 
       if (!this.$route.params.index) {
-        return positions['ribeirao-preto']
+        return positions['jaragua']
       }
 
       return positions[this.$route.params.index]
@@ -700,7 +699,7 @@ export default {
 
   head () {
     return {
-      title: 'COVID-19 | Ribeirão Preto | Ocupação de leitos hospitalares'
+      title: 'COVID-19 | Jaraguá - GO | Ocupação de leitos hospitalares'
     }
   }
 }

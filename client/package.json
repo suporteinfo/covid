@@ -1,7 +1,7 @@
 {
   "name": "covid",
-  "version": "1.0.0",
-  "description": "Leitos hospitalares COVID-19 em Ribeirão Preto.",
+  "version": "1.0.1",
+  "description": "Leitos hospitalares COVID-19 em Jaraguá - GO.",
   "author": "Bild &amp; Vitta",
   "private": true,
   "scripts": {

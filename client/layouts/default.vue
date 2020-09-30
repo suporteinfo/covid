@@ -101,7 +101,7 @@ export default {
     },
 
     setSelect () {
-      const cityQuery = this.$route.params.index || 'ribeirao-preto'
+      const cityQuery = this.$route.params.index || 'jaragua'
       this.city = this.dashboard.cities.find(city => city.value === cityQuery)
     }
   }
