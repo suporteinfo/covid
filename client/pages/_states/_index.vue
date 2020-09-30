@@ -217,7 +217,7 @@ export default {
   },
 
   validate ({ params }) {
-    return params.states === 'sp'
+    return params.states === 'go'
   },
 
   data () {
@@ -538,7 +538,7 @@ export default {
 
     mapCenter () {
       const positions = {
-        'jaragua': [-21.1775, -47.81028]
+        'jaragua': [-15.7416, -49.35049]
       }
 
       if (!this.$route.params.index) {
