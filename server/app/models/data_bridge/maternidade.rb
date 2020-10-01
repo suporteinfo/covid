@@ -3,7 +3,7 @@
 module DataBridge
   class Maternidade < DataBridge::GoogleDriveBase
     def save!
-      Hospital.find_by_slug('hospital-paulinia').beds.destroy_all
+      Hospital.find_by_slug('maternidade').beds.destroy_all
       super
     end
 
@@ -47,10 +47,10 @@ module DataBridge
 
     def create_object(bed_type, status, iterator)
       DataBridge::InternalObject.new(
-        hospital_slug: 'hospital-paulinia',
+        hospital_slug: 'maternidade',
         status: status,
         bed_type: bed_type,
-        slug: "hospital-paulinia-#{bed_type}-#{status}-#{iterator}",
+        slug: "maternidade-#{bed_type}-#{status}-#{iterator}",
         using_ventilator: false
       )
     end

@@ -4,12 +4,11 @@ module DataBridge
   class HospitalEstadual < DataBridge::GoogleDriveBase
     def save!
       Hospital.find_by_slug('hospital-estadual').beds.destroy_all
-
       super
     end
 
     def get_data
-      spreadsheet_key = Rails.application.credentials.paulinia_spreadsheet_key
+      spreadsheet_key = Rails.application.credentials.hospital_estadual_spreadsheet_key
       @worksheet = get_data_from_google_drive(spreadsheet_key).worksheets[0]
       process_beds
       self.data = nil if Rails.env.production?
@@ -47,10 +46,10 @@ module DataBridge
 
     def create_object(bed_type, status, iterator)
       DataBridge::InternalObject.new(
-        hospital_slug: 'hospital-paulinia',
+        hospital_slug: 'hospital-estadual',
         status: status,
         bed_type: bed_type,
-        slug: "hospital-paulinia-#{bed_type}-#{status}-#{iterator}",
+        slug: "hospital-estadual-#{bed_type}-#{status}-#{iterator}",
         using_ventilator: false
       )
     end
