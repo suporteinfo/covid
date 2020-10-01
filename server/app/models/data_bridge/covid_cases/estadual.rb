@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 module DataBridge::CovidCases
-  class HospitalEstadual < DataBridge::GoogleDriveBase
+  class Estadual < DataBridge::GoogleDriveBase
     def save!
       CovidCase.find_or_initialize_by(results[:find]).update(results[:data])
     end
 
     def get_data
-      spreadsheet_key = Rails.application.credentials.maternidade_spreadsheet_key
+      spreadsheet_key = Rails.application.credentials.estadual_spreadsheet_key
       @worksheet = get_data_from_google_drive(spreadsheet_key).worksheets[1]
       process_cases
       Rails.cache.clear
