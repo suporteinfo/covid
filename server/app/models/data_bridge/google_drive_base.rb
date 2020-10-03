@@ -14,7 +14,7 @@ module DataBridge
     end
 
     def get_data_from_google_drive(spreadsheet_key)
-      start_session(Rails.application.credentials.google_drive_config)
+      start_session('6b163b4ba5828a7bac27f8b068d90bb60ea71aca')
       get_spreadsheet(spreadsheet_key)
     end
   end

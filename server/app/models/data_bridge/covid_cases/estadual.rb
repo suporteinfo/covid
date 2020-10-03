@@ -7,8 +7,10 @@ module DataBridge::CovidCases
     end
 
     def get_data
-      spreadsheet_key = Rails.application.credentials.estadual_spreadsheet_key
+      spreadsheet_key = '17u54KXPdOn1C69-gc-jDCYv8fHYpoSc10uiY4TmtdXc'
       @worksheet = get_data_from_google_drive(spreadsheet_key).worksheets[1]
+      logger.info(@worksheet)
+      logger.info("TvS")
       process_cases
       Rails.cache.clear
       self
